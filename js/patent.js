@@ -20,9 +20,10 @@ if (!n) { T('Выберите нишу'); return; }
 if (!t) { T('Введите название изобретения'); return; }
 if (!d) { T('Введите описание'); return; }
 if ('NDEFReader' in window && U.hasChip) {
-scanChipForPatent(t, n, d);
-} else {
-fixInvData(t, n, d);
+    scanChipForPatent(t, n, d);
+  } else {
+    T('📱 iOS: NFC фиксация скоро. Сохраняем в демо-режиме...');
+    setTimeout(function(){ fixInvData(t, n, d); }, 1500);
 }
 }
 async function scanChipForPatent(t, n, d) {
