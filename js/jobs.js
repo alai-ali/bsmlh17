@@ -1,4 +1,4 @@
-// ── БИРЖА ТРУДА ──
+// БИРЖА ТРУДА
 var jobsDB = null;
 var currentJobId = null;
 var currentRole = null; // 'employer' или 'worker'
@@ -11,7 +11,7 @@ function initJobsDB() {
   loadJobs();
 }
 
-// ── РОЛЬ ──
+// РОЛЬ
 function selectRole(role) {
   currentRole = role;
   el('jobs-role').style.display = 'none';
@@ -23,7 +23,7 @@ function selectRole(role) {
   }
 }
 
-// ── КАТЕГОРИИ ──
+// КАТЕГОРИИ
 var jobCategories = [
   { id:'it', icon:'💻', name:'IT и технологии' },
   { id:'build', icon:'🏗️', name:'Строительство' },
@@ -48,7 +48,7 @@ function renderCategories(targetId, onSelect) {
   }).join('');
 }
 
-// ── РАБОТОДАТЕЛЬ ──
+// РАБОТОДАТЕЛЬ
 var selectedCategory = '';
 
 function showPostJob() {
@@ -120,14 +120,14 @@ function loadMyJobs() {
       return '<div class="job-item" onclick="openJobDetail(\''+j.id+'\')" style="cursor:pointer;">'
         + '<div class="job-company">' + (jobCategories.find(function(c){return c.id===j.category;})||{icon:'🔧'}).icon + ' ' + j.location + '</div>'
         + '<div class="job-title">' + j.title + '</div>'
-       + '<div class="job-tags"><span class="job-tag">'+j.price+'</span><span class="job-tag" style="background:'+(j.status==='open'?'var(--green-light)':'#FEE2E2')+';color:'+(j.status==='open'?'var(--green)':'#EF4444')+'">'+(j.status==='open'?'Открыт':'Закрыт')+'</span></div>'
+        + '<div class="job-tags"><span class="job-tag">'+j.price+'</span><span class="job-tag" style="background:'+(j.status==='open'?'var(--green-light)':'#FEE2E2');color:'+(j.status==='open'?'var(--green)':'#EF4444')+'">'+(j.status==='open'?'Открыт':'Закрыт')+'</span></div>'
         + '<div style="font-size:12px;color:var(--green);margin-top:6px;font-weight:600;">👥 Откликов: '+appCount+'</div>'
         + '</div>';
     }).join('');
   });
 }
 
-// ── РАБОТНИК ──
+// РАБОТНИК
 function loadJobs() {
   if (!jobsDB) { setTimeout(loadJobs, 500); return; }
   var list = el('worker-jobs-list');
@@ -159,7 +159,7 @@ function applyToJob(jobId, btn) {
   }).catch(function(e){ T('Ошибка: ' + e.message); });
 }
 
-// ── ДЕТАЛИ ЗАКАЗА ──
+// ДЕТАЛИ ЗАКАЗА
 function openJobDetail(jobId) {
   if (!jobsDB) return;
   currentJobId = jobId;
@@ -220,7 +220,7 @@ function closeJobDetail() {
   el('job-detail').style.display = 'none';
 }
 
-// ── ЧАТ ──
+// ЧАТ
 var chatRef = null;
 var chatJobId = null;
 var chatWorkerHuid = null;
@@ -261,7 +261,7 @@ function closeJobChat() {
   el('job-chat').style.display = 'none';
 }
 
-// ── РЕЙТИНГ ──
+// РЕЙТИНГ
 function openRating(jobId, targetHuid, targetName) {
   el('rating-title').innerText = 'Оценить: ' + targetName;
   el('rating-job-id').value = jobId;
@@ -297,7 +297,7 @@ function submitRating() {
 
 function closeRating() { el('rating-panel').style.display = 'none'; }
 
-// ── ФИЛЬТР ──
+// ФИЛЬТР
 function filterJobs(catId) {
   if (!jobsDB) return;
   var list = el('worker-jobs-list');
