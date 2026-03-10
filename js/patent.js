@@ -23,7 +23,7 @@ if ('NDEFReader' in window && U.hasChip) {
     scanChipForPatent(t, n, d);
   } else {
     T('📱 iOS: NFC фиксация скоро. Сохраняем в демо-режиме...');
-    setTimeout(function(){ fixInvData(t, n, d); }, 1500);
+    setTimeout(function(){ fixInvData(t, n, d); }, 3000);
 }
 }
 async function scanChipForPatent(t, n, d) {
