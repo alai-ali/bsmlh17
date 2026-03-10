@@ -20,12 +20,13 @@ function initMap() {
   // Загрузить Leaflet JS
   if (!window.L) {
     var s = document.createElement('script');
-    s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-    s.onload = function() { createMap(); };
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+    s.onload = function() { setTimeout(createMap, 300); };
     document.head.appendChild(s);
   } else {
-    createMap();
+    setTimeout(createMap, 300);
   }
+}
 }
 
 function createMap() {
