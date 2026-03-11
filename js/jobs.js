@@ -234,6 +234,7 @@ var chatJobId = null;
 var chatWorkerHuid = null;
 
 function openJobChat(jobId, workerHuid, workerName) {
+  if (chatRef) { chatRef.off(); chatRef = null; }
   chatJobId = jobId;
   chatWorkerHuid = workerHuid;
   var chatTitle = el('job-chat-title');
