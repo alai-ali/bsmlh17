@@ -150,7 +150,7 @@ function loadJobs() {
         + '<div style="font-size:13px;color:var(--text2);margin-bottom:8px;line-height:1.5;">' + j.desc.substring(0,80) + (j.desc.length>80?'...':'') + '</div>'
         + '<div class="job-tags"><span class="job-tag">'+j.price+'</span><span class="job-tag">'+j.location+'</span></div>'
         + (alreadyApplied
-          ? '<div style="margin-top:10px;display:flex;gap:8px;align-items:center;"><span style="font-size:13px;color:var(--green);font-weight:600;flex:1;">✅ Вы откликнулись</span><button style="padding:8px 14px;background:var(--green);color:white;border:none;border-radius:10px;font-size:13px;cursor:pointer;" onclick="event.stopPropagation();openJobChat(\''+j.id+'\',\''+j.employerHuid+'\',\''+j.employer+'\')">💬 Чат</button></div>'
+          ? '<div style="margin-top:10px;display:flex;gap:8px;align-items:center;"><span style="font-size:13px;color:var(--green);font-weight:600;flex:1;">✅ Вы откликнулись</span><button style="padding:8px 14px;background:var(--green);color:white;border:none;border-radius:10px;font-size:13px;cursor:pointer;" onclick="event.stopPropagation();openJobChat(\''+j.id+'\',\''+U.huid+'\',\''+j.employer+'\')">💬 Чат</button></div>'
           : '<button class="btn" style="margin-top:10px;padding:10px;font-size:13px;" onclick="event.stopPropagation();applyToJob(\''+j.id+'\',this)">Откликнуться</button>')
         + '</div>';
     }).join('');
