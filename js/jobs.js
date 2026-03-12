@@ -169,7 +169,6 @@ function applyToJob(jobId, btn) {
 
 // ДЕТАЛИ ЗАКАЗА
 function openJobDetail(jobId) {
-  if (!jobsDB) return;
   currentJobId = jobId;
   jobsDB.child(jobId).once('value', function(snap) {
     var j = snap.val();
