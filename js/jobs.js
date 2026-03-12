@@ -142,6 +142,7 @@ firebase.database().ref('jobs').on('value', function(snap) {    var jobs = snap.
     if (!jobs) { list.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text2);font-size:13px;">Нет доступных заказов</div>'; return; }
     list.innerHTML = Object.values(jobs).reverse().map(function(j) {
       var alreadyApplied = j.applicants && j.applicants[U.huid.replace(/[^a-zA-Z0-9]/g,'')];
+      if(j.id==='MMNIFG6Z') T(j.selectedWorker+'=='+U.huid+':'+(j.selectedWorker===U.huid));
       var cat = jobCategories.find(function(c){return c.id===j.category;})||{icon:'??'};
       return '<div class="job-item" onclick="openJobDetail(\''+j.id+'\')" style="cursor:pointer;">'
         + '<div class="job-company">' + cat.icon + ' ' + j.employer + '</div>'
