@@ -284,12 +284,9 @@ function sendJobChatMsg() {
     time: Date.now() 
   });
 }
-
 function closeJobChat() {
   if (chatRef) { chatRef.off(); chatRef = null; }
   el('job-chat').style.display = 'none';
-  if (U.jobRole === 'worker') loadJobs();
-  if (U.jobRole === 'employer') loadEmployerJobs();
 }
 // РЕЙТИНГ
 function openRating(jobId, targetHuid, targetName) {
