@@ -124,6 +124,11 @@ function loadJobs() {
   firebase.database().ref('jobs').on('value', function(snap) {
     var jobs = snap.val();
     if (!jobs) { list.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text2);font-size:13px;">Нет доступных заказов</div>'; return; }
+    var jobList = Object.values(jobs).filter(function(j) {
+  var myKey = U.huid.replace(/[^a-zA-Z0-9]/g,'');
+  var iApplied = j.applicants && j.applicants[myKey];
+  return j.status === 'open' || iApplied || j.selectedWorker === U.huid;
+});
     list.innerHTML = Object.values(jobs).reverse().map(function(j) {
       var myKey = U.huid.replace(/[^a-zA-Z0-9]/g,'');
       var alreadyApplied = j.applicants && j.applicants[myKey];
